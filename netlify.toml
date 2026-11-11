@@ -1,0 +1,15 @@
+[build]
+  base = "Portfolio-master"
+  command = "npm ci --no-audit --no-fund || npm install --legacy-peer-deps --no-audit --no-fund; npm run build"
+  publish = "build"
+
+[build.environment]
+  # Create React App fails the build on lint warnings when CI=true
+  CI = "false"
+  NODE_VERSION = "18"
+
+# Single-page app routing (react-router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
